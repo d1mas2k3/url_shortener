@@ -1,0 +1,7 @@
+{
+    "makefile.configureOnOpen": true,
+    "explorer.compactFolders": false,
+    "workbench.tree.indent": 24,
+    "editor.fontSize": 22,
+    "editor.fontFamily": "Menlo"
+}
