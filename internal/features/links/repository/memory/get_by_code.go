@@ -4,10 +4,11 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/d1mas2k3/url-shortener/internal/core/domain"
-	core_errors "github.com/d1mas2k3/url-shortener/internal/core/errors"
+	"github.com/d1mas2k3/url_shortener/internal/core/domain"
+	core_errors "github.com/d1mas2k3/url_shortener/internal/core/errors"
 )
 
+// GetByCode возвращает ссылку по короткому коду.
 func (r *LinksMemoryRepository) GetByCode(
 	ctx context.Context,
 	code string,

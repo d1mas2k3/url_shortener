@@ -6,10 +6,11 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/d1mas2k3/url-shortener/internal/core/domain"
-	core_errors "github.com/d1mas2k3/url-shortener/internal/core/errors"
+	"github.com/d1mas2k3/url_shortener/internal/core/domain"
+	core_errors "github.com/d1mas2k3/url_shortener/internal/core/errors"
 )
 
+// Сохраняет пару [code, url] в хранилище(LinksMemoryRepository)
 func (r *LinksMemoryRepository) Save(ctx context.Context, link domain.Link) error {
 	// Полный лок на запись
 	r.mx.Lock()

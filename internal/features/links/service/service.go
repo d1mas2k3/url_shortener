@@ -1,11 +1,10 @@
-package links_service
-
 // Содержит бизнес-логику работы со ссылками
+package links_service
 
 import (
 	"context"
 
-	"github.com/d1mas2k3/url-shortener/internal/core/domain"
+	"github.com/d1mas2k3/url_shortener/internal/core/domain"
 )
 
 type LinkService struct {
