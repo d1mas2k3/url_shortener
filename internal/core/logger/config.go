@@ -8,7 +8,7 @@ import (
 	"github.com/kelseyhightower/envconfig"
 )
 
-// // Структура с настройками логгера: уровень логов (LOGGER_LEVEL) и папка для файлов (LOGGER_FOLDER)
+// Структура с настройками логгера: уровень логов (LOGGER_LEVEL) и папка для файлов (LOGGER_FOLDER)
 type Config struct {
 	Level  string `envconfig:"LEVEL"  default:"DEBUG"`
 	Folder string `envconfig:"FOLDER" required:"true"`

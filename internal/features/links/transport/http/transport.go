@@ -12,6 +12,7 @@ import (
 
 type LinksHTTPHandler struct {
 	linksService LinksService
+	baseURL      string
 }
 
 type LinksService interface {
@@ -43,8 +44,10 @@ func (h *LinksHTTPHandler) Routes() []core_http_server.Route {
 
 func NewLinksHTTPHandler(
 	linksService LinksService,
+	baseURL string,
 ) *LinksHTTPHandler {
 	return &LinksHTTPHandler{
 		linksService: linksService,
+		baseURL:      baseURL,
 	}
 }

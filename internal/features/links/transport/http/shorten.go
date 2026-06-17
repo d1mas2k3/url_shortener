@@ -8,7 +8,7 @@ import (
 	core_http_response "github.com/d1mas2k3/url_shortener/internal/core/transport/http/response"
 )
 
-// HTTP-обёртка над бизнес-логикой создания короткой ссылки. Принимает POST-запрос с 
+// HTTP-обёртка над бизнес-логикой создания короткой ссылки. Принимает POST-запрос с
 // оригинальным URL, отдаёт его в сервис, возвращает клиенту короткий URL в JSON.
 func (h *LinksHTTPHandler) Shorten(rw http.ResponseWriter, r *http.Request) {
 	// Достаём контекст запроса и логгер, который middleware положил в контекст
@@ -34,6 +34,6 @@ func (h *LinksHTTPHandler) Shorten(rw http.ResponseWriter, r *http.Request) {
 	}
 
 	// Маппим domain.Link в DTO и отправляем клиенту 201 Created
-	response := linkDTOFromDomain(link, "http://localhost:8080")
+	response := linkDTOFromDomain(link, h.baseURL)
 	responseHandler.JSONResponse(response, http.StatusCreated)
 }
