@@ -4,8 +4,10 @@ package links_transport_http
 
 import (
 	"context"
+	"net/http"
 
 	"github.com/d1mas2k3/url_shortener/internal/core/domain"
+	core_http_server "github.com/d1mas2k3/url_shortener/internal/core/transport/http/server"
 )
 
 type LinksHTTPHandler struct {
@@ -21,6 +23,22 @@ type LinksService interface {
 		ctx context.Context,
 		code string,
 	) (domain.Link, error)
+}
+
+// Возвращает список HTTP-маршрутов (эндпоинтов), которые поддерживает LinksHTTPHandler
+func (h *LinksHTTPHandler) Routes() []core_http_server.Route {
+	return []core_http_server.Route{
+		{
+			Method:  http.MethodPost,
+			Path:    "/links",
+			Handler: h.Shorten,
+		},
+		{
+			Method:  http.MethodGet,
+			Path:    "/links/{code}",
+			Handler: h.Resolve,
+		},
+	}
 }
 
 func NewLinksHTTPHandler(
