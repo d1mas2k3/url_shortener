@@ -12,7 +12,7 @@ import (
 
 func (r *LinksPostgresRepository) GetByURL(
 	ctx context.Context,
-	originalURL  string,
+	originalURL string,
 ) (domain.Link, error) {
 	// Ограничивает время выполнения запроса (защита от зависаний)
 	ctx, cancel := context.WithTimeout(ctx, r.pool.OpTimeout())
@@ -22,7 +22,7 @@ func (r *LinksPostgresRepository) GetByURL(
 	query := `SELECT code, original_url FROM links WHERE original_url = $1`
 
 	// Получаем ровно одну строку с нужными sql-данными
-	row := r.pool.QueryRow(ctx, query, originalURL )
+	row := r.pool.QueryRow(ctx, query, originalURL)
 	var link domain.Link
 	err := row.Scan(&link.Code, &link.OriginalURL)
 	if err != nil {

@@ -21,6 +21,6 @@ type ResolveResponse struct {
 func linkDTOFromDomain(link domain.Link, baseURL string) ShortenResponse {
 	// например "http://localhost:8080/abc1234567"
 	return ShortenResponse{
-		ShortURL: baseURL + "/" + link.Code,
+		ShortURL: baseURL + "/links/" + link.Code,
 	}
 }
