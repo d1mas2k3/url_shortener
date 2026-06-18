@@ -1,4 +1,0 @@
-2026-06-18T13:58:28.941252	DEBUG	server/main.go:42	initializing storage	{"storage": "postgres"}
-2026-06-18T13:58:29.019494	DEBUG	server/main.go:79	starting HTTP server
-2026-06-18T13:58:29.019494	WARN	server/server.go:63	start HTTP server	{"addr": ":8080"}
-2026-06-18T13:58:29.020020	ERROR	server/main.go:81	HTTP server run error	{"error": "listen and serve HTTP: listen tcp :8080: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted."}
