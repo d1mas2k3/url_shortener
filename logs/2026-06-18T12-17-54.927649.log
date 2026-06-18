@@ -1,0 +1,8 @@
+2026-06-18T15:17:54.927649	DEBUG	server/main.go:42	initializing storage	{"storage": "postgres"}
+2026-06-18T15:17:54.996650	DEBUG	server/main.go:79	starting HTTP server
+2026-06-18T15:17:54.997172	WARN	server/server.go:63	start HTTP server	{"addr": ":8080"}
+2026-06-18T15:18:08.138144	DEBUG	middleware/common.go:87	>>> incoming HTTP request	{"request_id": "6a3d9abd-8335-49c9-b8f7-84290f231850", "url": "/api/v1/links", "http_method": "POST", "time": "2026-06-18T12:18:08.138144"}
+2026-06-18T15:18:08.138144	DEBUG	http/shorten.go:17	invoke shorten handler	{"request_id": "6a3d9abd-8335-49c9-b8f7-84290f231850", "url": "/api/v1/links"}
+2026-06-18T15:18:08.167204	DEBUG	middleware/common.go:95	<<< done HTTP request	{"request_id": "6a3d9abd-8335-49c9-b8f7-84290f231850", "url": "/api/v1/links", "status_code": 201, "latency": "29.0601ms"}
+2026-06-18T15:24:37.603397	WARN	server/server.go:80	shutdown HTTP server
+2026-06-18T15:24:37.603397	WARN	server/server.go:96	HTTP server stopped
