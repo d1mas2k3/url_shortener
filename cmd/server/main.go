@@ -9,9 +9,11 @@ import (
 
 	core_config "github.com/d1mas2k3/url_shortener/internal/core/config"
 	core_logger "github.com/d1mas2k3/url_shortener/internal/core/logger"
+	core_postgres_pool "github.com/d1mas2k3/url_shortener/internal/core/repository/postgres/pool"
 	core_http_middleware "github.com/d1mas2k3/url_shortener/internal/core/transport/http/middleware"
 	core_http_server "github.com/d1mas2k3/url_shortener/internal/core/transport/http/server"
 	links_memory_repository "github.com/d1mas2k3/url_shortener/internal/features/links/repository/memory"
+	links_postgres_repository "github.com/d1mas2k3/url_shortener/internal/features/links/repository/postgres"
 	links_service "github.com/d1mas2k3/url_shortener/internal/features/links/service"
 	links_transport_http "github.com/d1mas2k3/url_shortener/internal/features/links/transport/http"
 	"go.uber.org/zap"
@@ -43,7 +45,12 @@ func main() {
 	case "memory":
 		repo = links_memory_repository.NewLinksMemoryRepository()
 	case "postgres":
-		logger.Fatal("postgres storage not implemented yet")
+		pool, err := core_postgres_pool.NewConnectionPool(ctx, core_postgres_pool.NewConfigMust())
+		if err != nil {
+			logger.Fatal("failed to init postgres connection pool", zap.Error(err))
+		}
+		defer pool.Close()
+		repo = links_postgres_repository.NewLinksPostgresRepository(pool)
 	default:
 		logger.Fatal("unknown storage type", zap.String("storage", appConfig.Storage))
 	}

@@ -18,3 +18,25 @@ test:
 
 test-race:
 	go test -race ./...
+
+up:
+	@docker compose --env-file .env up -d url-shortener-postgres
+
+down:
+	@docker compose --env-file .env down url-shortener-postgres
+
+init-db:
+	@docker exec -i url-shortener-postgres psql -U ${POSTGRES_USER} -d ${POSTGRES_DB} < init.sql
+
+docker-build:
+	@docker build -t url-shortener .
+
+docker-run-memory:
+	@docker run -p 8080:8080 \
+		-e APP_STORAGE=memory \
+		-e APP_BASE_URL=${APP_BASE_URL} \
+		-e HTTP_ADDR=${HTTP_ADDR} \
+		-e HTTP_SHUTDOWN_TIMEOUT=${HTTP_SHUTDOWN_TIMEOUT} \
+		-e LOGGER_LEVEL=${LOGGER_LEVEL} \
+		-e LOGGER_FOLDER=/tmp/logs \
+		url-shortener

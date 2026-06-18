@@ -12,3 +12,5 @@
 2026-06-17T21:05:22.559801	DEBUG	http/resolve.go:16	invoke resolve handler	{"request_id": "ca5b6616-27ea-4570-9a7b-35e02fb88a81", "url": "/api/v1/links/A_1v_q5doS"}
 2026-06-17T21:05:22.560400	DEBUG	response/handler.go:72	failed to resolve code	{"request_id": "ca5b6616-27ea-4570-9a7b-35e02fb88a81", "url": "/api/v1/links/A_1v_q5doS", "error": "getting by code: get by code=\"A_1v_q5doS\": not found"}
 2026-06-17T21:05:22.560400	DEBUG	middleware/common.go:95	<<< done HTTP request	{"request_id": "ca5b6616-27ea-4570-9a7b-35e02fb88a81", "url": "/api/v1/links/A_1v_q5doS", "status_code": 404, "latency": "598.8µs"}
+2026-06-18T00:40:19.976152	WARN	server/server.go:80	shutdown HTTP server
+2026-06-18T00:40:19.977230	WARN	server/server.go:96	HTTP server stopped
